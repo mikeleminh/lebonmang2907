@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Món quà dành tặng Mẹ</title>
-    <!-- Phông chữ Google Fonts dịu nhẹ, mộc mạc -->
+    <title>Món quà Bổn Mạng dành tặng Mẹ</title>
+    <!-- Phông chữ sang trọng & cổ điển -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -17,103 +17,126 @@
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, #fff5f5 0%, #fed7aa 100%);
+            font-family: 'Montserrat', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #4a3b32;
+            color: #fff;
             overflow-x: hidden;
+            position: relative;
+            
+            /* Nền ảnh anhthanhmatta.png phủ lớp gradient tối sang trọng */
+            background: linear-gradient(rgba(15, 12, 29, 0.65), rgba(0, 0, 0, 0.75)), 
+                        url('anhthanhmatta.png') no-repeat center center/cover fixed;
         }
 
         /* Container chính */
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
             text-align: center;
             position: relative;
+            z-index: 2;
         }
 
-        /* --- TRANG CHỦ (LANDING PAGE) --- */
+        /* --- TRANG CHỦ (LANDING PAGE - GLASSMORPHISM + GOLD ACCENTS) --- */
         #landing-page {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 50px 30px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 60px 40px;
+            border-radius: 28px;
+            /* Viền vàng kim ánh kim loại */
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                        inset 0 0 15px rgba(212, 175, 55, 0.15);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .subtitle {
-            font-size: 0.95rem;
-            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #c05621;
-            font-weight: 600;
-            margin-bottom: 12px;
+            color: #f3e5ab; /* Vàng nhạt */
+            margin-bottom: 18px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .main-title {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
-            color: #7b341e;
+            font-weight: 600;
+            /* Gradient màu vàng kim cho tiêu đề */
+            background: linear-gradient(135deg, #fff 0%, #ffe89a 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1.3;
-            margin-bottom: 16px;
+            margin-bottom: 22px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .date-badge {
             display: inline-block;
-            background-color: #feebc8;
-            color: #9c4221;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 35px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: #fbe394;
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 40px;
+            font-family: 'Cinzel', serif;
         }
 
-        /* Nút bấm mở món quà */
+        /* Nút bấm Hoàng gia / Luxury Button */
         .open-btn {
-            background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%);
-            color: #ffffff;
+            background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+            color: #1a1508;
             border: none;
-            padding: 16px 36px;
-            font-size: 1rem;
+            padding: 18px 42px;
+            font-size: 0.95rem;
             font-weight: 600;
-            font-family: 'Quicksand', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(192, 86, 33, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .open-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(192, 86, 33, 0.4);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.7);
+            background: linear-gradient(135deg, #ffe066 0%, #d4af37 100%);
         }
 
         .open-btn:active {
             transform: translateY(1px);
         }
 
-        /* --- TRANG NỘI DUNG CHÍNH (MAIN CONTENT PAGE) --- */
+        /* --- TRANG NỘI DUNG CHÍNH --- */
         #main-content {
-            display: none; /* Mặc định ẩn */
+            display: none;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px 30px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(20, 16, 25, 0.75);
+            backdrop-filter: blur(20px);
+            padding: 50px 35px;
+            border-radius: 28px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
-        /* Lớp ẩn hiệu ứng khi nhấn nút */
+        /* Classes hiệu ứng chuyển trang */
         .fade-out {
             opacity: 0 !important;
-            transform: translateY(-20px) !important;
+            transform: translateY(-30px) scale(0.95) !important;
             pointer-events: none;
         }
 
@@ -127,19 +150,23 @@
 <body>
 
     <div class="container">
-        <!-- 1. TRANG CHỦ -->
+        <!-- 1. TRANG CHỦ HOÀNH TRÁNG -->
         <section id="landing-page">
-            <p class="subtitle">Món quà nhỏ dành cho Mẹ</p>
-            <h1 class="main-title">Chúc mừng Bổn mạng<br>Thánh Marta</h1>
-            <div class="date-badge">29 tháng 07, 2026</div>
+            <p class="subtitle">Món Quà Kính Tặng Mẹ</p>
+            <h1 class="main-title">Chúc Mừng Bổn Mạng<br>Thánh Marta</h1>
+            <div class="date-badge">29 . 07 . 2026</div>
             <br>
-            <button class="open-btn" onclick="openGift()">Nhấn vào đây để mở món quà ♡</button>
+            <button class="open-btn" onclick="openGift()">Khám Phá Món Quà ✨</button>
         </section>
 
-        <!-- 2. TRANG NỘI DUNG CHÍNH (Sẽ code tiếp ở bước sau) -->
+        <!-- 2. TRANG NỘI DUNG CHÍNH -->
         <section id="main-content">
-            <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #7b341e; margin-bottom: 15px;">Món quà của Mẹ ở đây</h2>
-            <p style="color: #666; line-height: 1.6;">(Nội dung Lời chúc, Nhạc, Video, Thiệp và Góc viết nhắn gửi sẽ nằm ở phần này)</p>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #ffe89a; margin-bottom: 20px;">
+                Dành Riêng Cho Mẹ Thắm
+            </h2>
+            <p style="color: #e0e0e0; line-height: 1.8; font-size: 0.95rem;">
+                (Phần nội dung chính: Lời chúc, Nhạc, Video kỷ niệm, Thiệp số và Góc phản hồi sẽ được dựng tiếp ở đây)
+            </p>
         </section>
     </div>
 
@@ -148,10 +175,8 @@
             const landing = document.getElementById('landing-page');
             const mainContent = document.getElementById('main-content');
 
-            // Hiệu ứng ẩn trang chủ
             landing.classList.add('fade-out');
 
-            // Sau 0.8s thì ẩn hẳn trang chủ và hiện trang nội dung
             setTimeout(() => {
                 landing.style.display = 'none';
                 mainContent.classList.add('fade-in');
