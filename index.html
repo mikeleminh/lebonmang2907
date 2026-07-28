@@ -234,11 +234,28 @@
                 <p>Con yêu mẹ nhiều lắm. ❤️</p>
             </div>
 
-            <!-- Các phần tiếp theo (Nhạc, Video, Thiệp) sẽ được thêm phía dưới bức thư này -->
+            <!-- TRÌNH PHÁT NHẠC -->
+            <div class="music-player">
+                <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <div class="music-info">
+                    <div class="music-title">Giai Điệu Dành Tặng Mẹ</div>
+                    <div class="music-sub">Lễ Bổn Mạng Thánh Marta</div>
+                    <div class="progress-bar-container" onclick="setProgress(event)">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File audio nhac.mp3 -->
+            <audio id="audio" src="nhac.mp3"></audio>
         </section>
     </div>
 
     <script>
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('playBtn');
+        const progressBar = document.getElementById('progressBar');
+
         function openGift() {
             const landing = document.getElementById('landing-page');
             const mainContent = document.getElementById('main-content');
@@ -248,8 +265,49 @@
             setTimeout(() => {
                 landing.style.display = 'none';
                 mainContent.classList.add('fade-in');
+                
+                // Tự động phát nhạc khi mở món quà
+                audio.play().then(() => {
+                    playBtn.innerHTML = '❚❚';
+                }).catch(err => {
+                    console.log("Trình duyệt chặn tự động phát nhạc:", err);
+                });
             }, 800);
         }
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '❚❚';
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '▶';
+            }
+        }
+
+        // Cập nhật thanh thời gian nhạc
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            }
+        });
+
+        // Tua nhạc khi click vào thanh tiến trình
+        function setProgress(e) {
+            const width = e.currentTarget.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            if (duration) {
+                audio.currentTime = (clickX / width) * duration;
+            }
+        }
+
+        // Khi hát xong thì chuyển icon về Play
+        audio.addEventListener('ended', () => {
+            playBtn.innerHTML = '▶';
+            progressBar.style.width = '0%';
+        });
     </script>
 </body>
 </html>
