@@ -538,6 +538,48 @@ transform:none;
     transform:translateY(-4px);
     box-shadow:0 10px 25px rgba(212,175,55,.35);
 }
+
+        /* ===== HIỆU ỨNG HOA RƠI ===== */
+
+#flowers{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+}
+
+.flower{
+    position:absolute;
+    top:-40px;
+    color:#fff8dc;
+    opacity:.8;
+    animation:fall linear forwards;
+    text-shadow:0 0 8px rgba(255,255,255,.6);
+    user-select:none;
+}
+
+@keyframes fall{
+
+    from{
+        transform:
+            translateY(-40px)
+            rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.9;
+    }
+
+    to{
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+        opacity:0;
+    }
+
+}
         /* Classes hiệu ứng chuyển trang */
         /* ===== GALLERY ===== */
 
@@ -634,7 +676,7 @@ transform:none;
     </style>
 </head>
 <body>
-
+<div id="flowers"></div>
     <div class="container">
         <!-- 1. TRANG CHỦ -->
         <section id="landing-page">
@@ -886,6 +928,45 @@ transform:none;
     </div>
 
     <script>
+        /* ===== HOA RƠI ===== */
+
+const flowerContainer = document.getElementById("flowers");
+
+const flowers = ["🤍","🌼","✿","❀","❁"];
+
+function createFlower(){
+
+    const flower = document.createElement("div");
+
+    flower.className = "flower";
+
+    flower.innerHTML =
+        flowers[Math.floor(Math.random()*flowers.length)];
+
+    flower.style.left = Math.random()*100 + "vw";
+
+    flower.style.fontSize =
+        (18 + Math.random()*20) + "px";
+
+    flower.style.animationDuration =
+        (8 + Math.random()*7) + "s";
+
+    flower.style.opacity =
+        0.4 + Math.random()*0.5;
+
+    flower.style.transform =
+        `rotate(${Math.random()*360}deg)`;
+
+    flowerContainer.appendChild(flower);
+
+    setTimeout(()=>{
+        flower.remove();
+    },16000);
+
+}
+
+setInterval(createFlower,700);
+        
         const audio = document.getElementById('audio');
         const playBtn = document.getElementById('playBtn');
         const progressBar = document.getElementById('progressBar');
