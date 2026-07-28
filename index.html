@@ -248,6 +248,87 @@
         }
 
         /* Classes hiệu ứng chuyển trang */
+        /* ===== GALLERY ===== */
+
+.gallery-section{
+    margin-top:40px;
+}
+
+.gallery-title{
+    text-align:center;
+    color:#ffe89a;
+    font-size:1.35rem;
+    margin-bottom:20px;
+    font-family:'Playfair Display', serif;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    max-width:620px;
+    margin:0 auto;
+}
+
+.photo-card{
+    overflow:hidden;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.horizontal{
+    grid-column:1 / -1;
+    max-height:360px;
+}
+
+.horizontal img{
+    height:360px;
+}
+
+.vertical{
+    height:300px;
+}
+
+.rectangle{
+    grid-column:1 / -1;
+    height:240px;
+}
+
+.photo-caption{
+    padding:12px;
+    text-align:center;
+    font-size:.9rem;
+    color:#f5e9c8;
+}
+
+@media (max-width:768px){
+
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .horizontal,
+    .rectangle{
+        grid-column:auto;
+    }
+
+    .horizontal img{
+        height:auto;
+    }
+
+    .vertical,
+    .rectangle{
+        height:auto;
+    }
+}
         .fade-out {
             opacity: 0 !important;
             transform: translateY(-30px) scale(0.95) !important;
@@ -303,17 +384,7 @@
                 <p>Con yêu mẹ nhiều lắm. ❤️</p>
             </div>
 
-            <!-- TRÌNH PHÁT NHẠC -->
-            <div class="music-player">
-                <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
-                <div class="music-info">
-                    <div class="music-title">Giai Điệu Dành Tặng Mẹ</div>
-                    <div class="music-sub">Lễ Bổn Mạng Thánh Matta</div>
-                    <div class="progress-bar-container" onclick="setProgress(event)">
-                        <div class="progress-bar" id="progressBar"></div>
-                    </div>
-                </div>
-            </div>
+    
             <!-- BỘ SƯU TẬP ẢNH KỶ NIỆM -->
             <div class="gallery-section">
                 <div class="gallery-title">✨ Khoảnh Khắc BÊN MẸ ✨</div>
