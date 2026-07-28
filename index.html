@@ -514,6 +514,120 @@ box-shadow:0 0 25px rgba(212,175,55,.45);
     }
 }
 
+        /* ===== POPUP ===== */
+
+.gift-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    backdrop-filter:blur(5px);
+}
+
+.gift-popup.show{
+    display:flex;
+    animation:fadePopup .3s ease;
+}
+
+.gift-popup-content{
+
+    width:90%;
+    max-width:420px;
+
+    background:#231d2b;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:22px;
+
+    padding:35px 30px;
+
+    text-align:center;
+
+    position:relative;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+
+}
+
+.popup-number{
+
+    font-family:'Cinzel',serif;
+
+    color:#d4af37;
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+
+}
+
+.popup-message{
+
+    color:#eee;
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+}
+
+.close-popup{
+
+    position:absolute;
+
+    right:18px;
+
+    top:18px;
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#d4af37;
+
+    color:#222;
+
+    font-size:1rem;
+
+    transition:.3s;
+
+}
+
+.close-popup:hover{
+
+    transform:rotate(90deg) scale(1.08);
+
+}
+
+@keyframes fadePopup{
+
+from{
+
+opacity:0;
+
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
         /* Classes hiệu ứng chuyển trang */
         /* ===== GALLERY ===== */
 
@@ -730,6 +844,17 @@ box-shadow:0 0 25px rgba(212,175,55,.45);
     <div class="gift-grid" id="giftGrid"></div>
 
 </section>
+            <div class="gift-popup" id="giftPopup">
+    <div class="gift-popup-content">
+
+        <button class="close-popup" id="closePopup">✕</button>
+
+        <div class="popup-number" id="popupNumber"></div>
+
+        <div class="popup-message" id="popupMessage"></div>
+
+    </div>
+</div>
 
             <!-- TRÌNH PHÁT NHẠC -->
             <div class="music-player">
@@ -869,8 +994,17 @@ messages.forEach((text, index) => {
     `;
 
     box.addEventListener("click", () => {
-        box.classList.add("open");
-    });
+
+    box.classList.add("open");
+
+    document.getElementById("giftPopup").classList.add("show");
+
+    document.getElementById("popupNumber").innerHTML =
+        "🎁 Món quà số " + (index + 1);
+
+    document.getElementById("popupMessage").innerHTML = text;
+
+});
 
     grid.appendChild(box);
 
