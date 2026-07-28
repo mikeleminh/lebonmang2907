@@ -7,7 +7,7 @@
     <!-- Phông chữ sang trọng & cổ điển -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -25,29 +25,29 @@
             color: #fff;
             overflow-x: hidden;
             position: relative;
+            padding: 20px 0;
             
             /* Nền ảnh anhthanhmatta.png phủ lớp gradient tối sang trọng */
-            background: linear-gradient(rgba(15, 12, 29, 0.65), rgba(0, 0, 0, 0.75)), 
+            background: linear-gradient(rgba(15, 12, 29, 0.7), rgba(0, 0, 0, 0.8)), 
                         url('anhthanhmatta.png') no-repeat center center/cover fixed;
         }
 
         /* Container chính */
         .container {
             width: 90%;
-            max-width: 650px;
+            max-width: 700px;
             text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        /* --- TRANG CHỦ (LANDING PAGE - GLASSMORPHISM + GOLD ACCENTS) --- */
+        /* --- TRANG CHỦ (LANDING PAGE) --- */
         #landing-page {
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             padding: 60px 40px;
             border-radius: 28px;
-            /* Viền vàng kim ánh kim loại */
             border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
                         inset 0 0 15px rgba(212, 175, 55, 0.15);
@@ -59,7 +59,7 @@
             font-size: 0.85rem;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #f3e5ab; /* Vàng nhạt */
+            color: #f3e5ab;
             margin-bottom: 18px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
@@ -68,7 +68,6 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
             font-weight: 600;
-            /* Gradient màu vàng kim cho tiêu đề */
             background: linear-gradient(135deg, #fff 0%, #ffe89a 50%, #d4af37 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -90,7 +89,6 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* Nút bấm Hoàng gia / Luxury Button */
         .open-btn {
             background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
             color: #1a1508;
@@ -105,8 +103,6 @@
             cursor: pointer;
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .open-btn:hover {
@@ -115,22 +111,71 @@
             background: linear-gradient(135deg, #ffe066 0%, #d4af37 100%);
         }
 
-        .open-btn:active {
-            transform: translateY(1px);
-        }
-
-        /* --- TRANG NỘI DUNG CHÍNH --- */
+        /* --- TRANG NỘI DUNG CHÍNH (MAIN CONTENT) --- */
         #main-content {
             display: none;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(20, 16, 25, 0.75);
+            background: rgba(20, 16, 25, 0.85);
             backdrop-filter: blur(20px);
-            padding: 50px 35px;
+            -webkit-backdrop-filter: blur(20px);
+            padding: 45px 35px;
             border-radius: 28px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            text-align: left;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #ffe89a;
+            margin-bottom: 8px;
+        }
+
+        /* Khung chứa bức thư */
+        .letter-box {
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 3px solid #d4af37;
+            padding: 30px 25px;
+            border-radius: 12px;
+            line-height: 1.85;
+            font-size: 0.98rem;
+            color: #f0e6d2;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .letter-box p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .letter-box p:last-child {
+            margin-bottom: 0;
+            text-align: right;
+            font-weight: 500;
+            color: #ffe89a;
+        }
+
+        /* Tùy chỉnh thanh cuộn cho bức thư */
+        .letter-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .letter-box::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.4);
+            border-radius: 10px;
         }
 
         /* Classes hiệu ứng chuyển trang */
@@ -150,10 +195,10 @@
 <body>
 
     <div class="container">
-        <!-- 1. TRANG CHỦ HOÀNH TRÁNG -->
+        <!-- 1. TRANG CHỦ -->
         <section id="landing-page">
             <p class="subtitle">Món Quà Kính Tặng Mẹ</p>
-            <h1 class="main-title">Chúc Mừng Bổn Mạng<br>Thánh Marta</h1>
+            <h1 class="main-title">Chúc Mừng Bổn Mạng<br>Thánh Matta</h1>
             <div class="date-badge">29 . 07 . 2026</div>
             <br>
             <button class="open-btn" onclick="openGift()">Khám Phá Món Quà ✨</button>
@@ -161,12 +206,35 @@
 
         <!-- 2. TRANG NỘI DUNG CHÍNH -->
         <section id="main-content">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #ffe89a; margin-bottom: 20px;">
-                Dành Riêng Cho Mẹ Thắm
-            </h2>
-            <p style="color: #e0e0e0; line-height: 1.8; font-size: 0.95rem;">
-                (Phần nội dung chính: Lời chúc, Nhạc, Video kỷ niệm, Thiệp số và Góc phản hồi sẽ được dựng tiếp ở đây)
-            </p>
+            <div class="section-header">
+                <h2 class="section-title">Gửi Mẹ Yêu Thương</h2>
+                <div style="width: 50px; height: 1px; background: #d4af37; margin: 0 auto;"></div>
+            </div>
+
+            <!-- GÓC LỜI CHÚC -->
+            <div class="letter-box">
+                <p>Mẹ yêu,</p>
+
+                <p>Hôm nay là lễ kính Thánh Matta, cũng là ngày bổn mạng của mẹ. Mỗi khi nghĩ đến Thánh Matta, con lại nghĩ đến mẹ. Thánh Matta là người luôn tận tụy phục vụ, âm thầm chăm lo cho mọi người bằng cả trái tim. Mẹ của con cũng vậy. Mẹ luôn tất bật từ sáng đến tối, lo cho gia đình từng bữa cơm, từng giấc ngủ, từng chuyện nhỏ nhặt mà đôi khi chính mẹ lại quên dành thời gian cho bản thân mình.</p>
+
+                <p>Có lẽ nhiều lần con làm mẹ buồn, làm mẹ lo lắng hay khiến mẹ phải phiền lòng. Có những lúc con bướng bỉnh, vô tâm, chưa hiểu hết những hy sinh thầm lặng của mẹ. Nhưng càng lớn, con càng nhận ra rằng phía sau mỗi lời nhắc nhở, mỗi lần nghiêm khắc hay mỗi đêm mẹ thức khuya vì con đều là một tình yêu rất lớn mà không gì có thể thay thế được.</p>
+
+                <p>Con biết mẹ cũng có những lúc mệt mỏi, áp lực, có những gánh nặng mà mẹ chẳng bao giờ kể. Con chỉ ước mình lớn nhanh hơn một chút để có thể san sẻ với mẹ nhiều hơn, để mẹ không phải một mình gánh vác mọi thứ như bây giờ.</p>
+
+                <p>Mẹ biết không? Gần đây, mẹ con mình thường cùng nhau lên nhà thờ. Sau mỗi Thánh lễ, mẹ lại kiên nhẫn đồng hành cùng con trên những buổi tập chạy xe. Với mọi người, đó có lẽ chỉ là những khoảnh khắc rất bình thường. Nhưng với con, đó lại là những kỷ niệm mà con sẽ luôn trân quý.</p>
+
+                <p>Có một đêm, con chợt nghĩ: rồi sẽ đến lúc con lớn, sẽ có những con đường con phải tự đi, và sẽ có một ngày con không còn được ở cạnh mẹ nhiều như bây giờ nữa. Chỉ nghĩ đến điều đó thôi, nước mắt con đã rơi. Con nhận ra rằng trưởng thành không chỉ là biết tự lập, mà còn là biết quý từng phút giây còn được ở bên người mình yêu thương. Con khóc vì nhớ những lần mẹ nắm tay con vượt qua khó khăn, những lời động viên khi con mệt mỏi, những lần mẹ âm thầm hy sinh để con có được ngày hôm nay. Con chỉ mong thời gian có thể trôi chậm lại một chút, để con còn được làm con của mẹ thật lâu, còn được cùng mẹ đi lễ, cùng mẹ cười nói và tạo nên thật nhiều kỷ niệm đẹp.</p>
+
+                <p>Nhân ngày lễ bổn mạng, con xin cầu chúc mẹ luôn mạnh khỏe, bình an và tràn đầy hồng ân của Chúa. Xin Chúa, qua lời chuyển cầu của Thánh Matta, ban cho mẹ thật nhiều sức khỏe, niềm vui, sự khôn ngoan và luôn gìn giữ mẹ trên mọi nẻo đường. Xin cho mẹ luôn cảm nhận được tình yêu của Chúa và của cả gia đình mình trong từng ngày sống.</p>
+
+                <p>Cảm ơn mẹ vì đã luôn yêu thương con bằng một tình yêu vô điều kiện. Dù con có lớn đến đâu, mẹ vẫn luôn là nơi bình yên nhất để con trở về.</p>
+
+                <p>Chúc mừng lễ bổn mạng của mẹ! Nguyện xin Thánh Matta luôn đồng hành, chuyển cầu và gìn giữ mẹ hôm nay cũng như mãi mãi.</p>
+
+                <p>Con yêu mẹ nhiều lắm. ❤️</p>
+            </div>
+
+            <!-- Các phần tiếp theo (Nhạc, Video, Thiệp) sẽ được thêm phía dưới bức thư này -->
         </section>
     </div>
 
