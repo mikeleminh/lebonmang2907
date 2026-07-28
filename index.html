@@ -288,6 +288,78 @@
         transform:scale(1.15);
     }
 }
+        /* ===== NUMBERS ===== */
+
+.numbers-section{
+    margin-top:70px;
+    text-align:center;
+}
+
+.numbers-title{
+    font-family:'Playfair Display', serif;
+    color:#ffe89a;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.numbers-subtitle{
+    color:#d6d6d6;
+    max-width:600px;
+    margin:0 auto 35px;
+    line-height:1.8;
+}
+
+.numbers-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.number-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:20px;
+    padding:30px 20px;
+    backdrop-filter:blur(8px);
+    transition:.35s;
+}
+
+.number-card:hover{
+    transform:translateY(-6px);
+    border-color:#d4af37;
+    box-shadow:0 10px 30px rgba(212,175,55,.15);
+}
+
+.number{
+    font-size:3rem;
+    font-weight:bold;
+    color:#d4af37;
+    margin-bottom:12px;
+    font-family:'Cinzel', serif;
+}
+
+.infinity{
+    font-size:3.5rem;
+}
+
+.number-card h3{
+    color:#fff;
+    margin-bottom:12px;
+    font-size:1.2rem;
+}
+
+.number-card p{
+    color:#d8d8d8;
+    line-height:1.7;
+}
+
+@media(max-width:768px){
+
+    .numbers-grid{
+        grid-template-columns:1fr;
+    }
+
+}
 
 
         /* Classes hiệu ứng chuyển trang */
@@ -457,6 +529,42 @@
                     </div>
                 </div>
             </div>
+
+            <section class="numbers-section">
+    <h2 class="numbers-title">✨ Một vài con số ✨</h2>
+    <p class="numbers-subtitle">
+        Có những điều không thể đong đếm. Nhưng con vẫn muốn lưu lại
+        vài con số đặc biệt này...
+    </p>
+
+    <div class="numbers-grid">
+
+        <div class="number-card">
+            <div class="number" data-target="15">0</div>
+            <h3>Năm</h3>
+            <p>Con được làm con của mẹ.</p>
+        </div>
+
+        <div class="number-card">
+            <div class="number infinity">∞</div>
+            <h3>Tình yêu</h3>
+            <p>Mẹ luôn dành cho con.</p>
+        </div>
+
+        <div class="number-card">
+            <div class="number" data-target="1">0</div>
+            <h3>Người</h3>
+            <p>Luôn là chỗ dựa lớn nhất của con.</p>
+        </div>
+
+        <div class="number-card">
+            <div class="number">29.07</div>
+            <h3>Ngày đặc biệt</h3>
+            <p>Lễ bổn mạng của mẹ.</p>
+        </div>
+
+    </div>
+</section>
 
             <!-- TRÌNH PHÁT NHẠC -->
             <div class="music-player">
