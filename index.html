@@ -360,7 +360,159 @@
     }
 
 }
+.gift-box{
+    aspect-ratio:1;
+    position:relative;
+    cursor:pointer;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(212,175,55,.25);
+    background:rgba(255,255,255,.05);
+    transition:.4s;
+    user-select:none;
+}
 
+.gift-box:hover{
+    transform:translateY(-6px) scale(1.04);
+    box-shadow:0 10px 25px rgba(212,175,55,.2);
+}
+
+.gift-front,
+.gift-back{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:.5s;
+    backface-visibility:hidden;
+}
+
+.gift-front{
+    color:#d4af37;
+    font-size:1rem;
+}
+
+.gift-front .emoji{
+    font-size:1.8rem;
+    margin-bottom:6px;
+}
+
+.gift-back{
+    transform:rotateY(180deg);
+    background:linear-gradient(135deg,#d4af37,#f6d97b);
+    color:#222;
+    padding:12px;
+    font-size:.82rem;
+    line-height:1.5;
+}
+
+.gift-box.open{
+    transform:rotateY(180deg);
+}
+
+.gift-box.open .gift-front{
+    transform:rotateY(180deg);
+}
+
+.gift-box.open .gift-back{
+    transform:rotateY(360deg);
+}
+
+.gift-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+
+    height:20px;
+
+    background:#ffe89a;
+
+    border-radius:50%;
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.gift-box.open::after{
+
+    animation:spark .8s ease;
+
+}
+
+@keyframes spark{
+
+0%{
+opacity:.9;
+transform:scale(.2);
+}
+
+100%{
+opacity:0;
+transform:scale(8);
+}
+
+}
+
+.gift-box.special{
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%,100%{
+box-shadow:0 0 0 rgba(212,175,55,0);
+}
+
+50%{
+box-shadow:0 0 25px rgba(212,175,55,.45);
+}
+
+}
+        .gift-section{
+    margin-top:80px;
+    text-align:center;
+}
+
+.gift-title{
+    font-family:'Playfair Display', serif;
+    color:#ffe89a;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.gift-subtitle{
+    color:#ddd;
+    max-width:650px;
+    margin:15px auto 40px;
+    line-height:1.8;
+}
+
+.gift-grid{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:12px;
+}
+
+@media(max-width:900px){
+    .gift-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .gift-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
 
         /* Classes hiệu ứng chuyển trang */
         /* ===== GALLERY ===== */
@@ -540,7 +692,7 @@
     <div class="numbers-grid">
 
         <div class="number-card">
-            <div class="number" data-target="15">0</div>
+            <div class="number" data-target="15">15</div>
             <h3>Năm</h3>
             <p>Con được làm con của mẹ.</p>
         </div>
@@ -552,7 +704,7 @@
         </div>
 
         <div class="number-card">
-            <div class="number" data-target="1">0</div>
+            <div class="number" data-target="1">01</div>
             <h3>Người</h3>
             <p>Luôn là chỗ dựa lớn nhất của con.</p>
         </div>
@@ -564,6 +716,19 @@
         </div>
 
     </div>
+</section>
+            <section class="gift-section">
+
+    <h2 class="gift-title">🎁 100 Món Quà Nhỏ Dành Cho Mẹ 🎁</h2>
+
+    <p class="gift-subtitle">
+        Có những món quà không được gói bằng giấy màu,
+        mà được gói bằng tình yêu.
+        Hãy mở từng chiếc hộp nhé. ❤️
+    </p>
+
+    <div class="gift-grid" id="giftGrid"></div>
+
 </section>
 
             <!-- TRÌNH PHÁT NHẠC -->
@@ -651,6 +816,65 @@
             playBtn.innerHTML = '▶';
             progressBar.style.width = '0%';
         });
+        // ================= GIFT SECTION =================
+
+const messages = [
+"Con yêu mẹ ❤️",
+"Cảm ơn mẹ đã luôn yêu thương con.",
+"Con tự hào vì được làm con của mẹ.",
+"Mẹ luôn là nơi bình yên nhất.",
+"Con mong mẹ luôn khỏe mạnh.",
+"Cảm ơn mẹ vì những bữa cơm ngon.",
+"Con xin lỗi vì những lần làm mẹ buồn.",
+"Con sẽ cố gắng học tập thật tốt.",
+"Con mong mẹ luôn cười thật nhiều.",
+"Mẹ là người hùng của con."
+];
+
+while (messages.length < 99) {
+    messages.push("❤️");
+}
+
+messages.push(`
+<h3>Món quà cuối cùng 🎁</h3>
+<p>
+Con yêu mẹ rất nhiều.<br><br>
+Chúc mẹ một ngày lễ bổn mạng thật nhiều niềm vui,
+sức khỏe và bình an.<br><br>
+❤️
+</p>
+`);
+
+const grid = document.getElementById("giftGrid");
+
+messages.forEach((text, index) => {
+
+    const box = document.createElement("div");
+
+    box.className = "gift-box";
+
+    if(index === 99){
+        box.classList.add("special");
+    }
+
+    box.innerHTML = `
+        <div class="gift-front">
+            <div class="emoji">🎁</div>
+            <div>${index+1}</div>
+        </div>
+
+        <div class="gift-back">
+            ${text}
+        </div>
+    `;
+
+    box.addEventListener("click", () => {
+        box.classList.add("open");
+    });
+
+    grid.appendChild(box);
+
+});
     </script>
 </body>
 </html>
