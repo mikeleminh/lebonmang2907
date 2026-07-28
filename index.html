@@ -246,6 +246,49 @@
             border-radius: 10px;
             transition: width 0.1s linear;
         }
+        /* ===== FOOTER ===== */
+
+.footer{
+    margin-top:60px;
+    padding:35px 20px 15px;
+    text-align:center;
+    color:#d8cfae;
+    opacity:.9;
+}
+
+.footer hr{
+    border:none;
+    height:1px;
+    background:linear-gradient(to right,
+        transparent,#d4af37,transparent);
+    margin-bottom:25px;
+}
+
+.footer p{
+    margin:8px 0;
+    line-height:1.8;
+}
+
+.footer .heart{
+    font-size:1.4rem;
+    animation:beat 1.8s infinite;
+}
+
+.footer .date{
+    font-size:.9rem;
+    letter-spacing:2px;
+    color:#b7a97d;
+}
+
+@keyframes beat{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }
+}
+
 
         /* Classes hiệu ứng chuyển trang */
         /* ===== GALLERY ===== */
@@ -426,7 +469,18 @@
                     </div>
                 </div>
             </div>
+<footer class="footer">
+    <hr>
 
+    <p>Được thực hiện bằng tất cả tình yêu của con.</p>
+
+    <p class="heart">❤️</p>
+
+    <p class="date">
+        29 • 07 • 2026<br>
+        Lễ kính Thánh Matta
+    </p>
+</footer>
             <!-- File audio nhac.mp3 -->
             <audio id="audio" src="nhac.mp3"></audio>
         </section>
