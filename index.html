@@ -149,8 +149,9 @@
             font-size: 0.98rem;
             color: #f0e6d2;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
-            max-height: 60vh;
+            max-height: 55vh;
             overflow-y: auto;
+            margin-bottom: 25px;
         }
 
         .letter-box p {
@@ -176,6 +177,74 @@
         .letter-box::-webkit-scrollbar-thumb {
             background: rgba(212, 175, 55, 0.4);
             border-radius: 10px;
+        }
+
+        /* --- BỔ SUNG CSS TRÌNH PHÁT NHẠC --- */
+        .music-player {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 15px 20px;
+            border-radius: 18px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            gap: 15px;
+        }
+
+        .play-btn {
+            background: linear-gradient(135deg, #d4af37, #aa7c11);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: #1a1508;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.08);
+            background: linear-gradient(135deg, #ffe066, #d4af37);
+        }
+
+        .music-info {
+            flex-grow: 1;
+        }
+
+        .music-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffe89a;
+            margin-bottom: 3px;
+        }
+
+        .music-sub {
+            font-size: 0.8rem;
+            color: #b0a8b9;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #d4af37, #ffe066);
+            border-radius: 10px;
+            transition: width 0.1s linear;
         }
 
         /* Classes hiệu ứng chuyển trang */
@@ -239,7 +308,7 @@
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
                 <div class="music-info">
                     <div class="music-title">Giai Điệu Dành Tặng Mẹ</div>
-                    <div class="music-sub">Lễ Bổn Mạng Thánh Marta</div>
+                    <div class="music-sub">Lễ Bổn Mạng Thánh Matta</div>
                     <div class="progress-bar-container" onclick="setProgress(event)">
                         <div class="progress-bar" id="progressBar"></div>
                     </div>
